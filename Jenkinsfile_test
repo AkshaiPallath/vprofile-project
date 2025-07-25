@@ -11,12 +11,13 @@ pipeline{
             steps{
                 sh'mvn clean install'
             }
-            post{
-                 success {
-                    archiveArtifacts artifacts: '**/*.war'
-                }
+        }
+        stage('Deploy'){
+            steps{
+                sh 'scp **/*.war ubuntu@ip-172-31-10-28:/home/ubuntu/QA_Target/'
             }
         }
+
     }
     
 }
