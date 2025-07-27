@@ -15,7 +15,7 @@ pipeline {
         stage('Unzip_File') {
             steps {
                 sh '''
-                    ssh -o StrictHostKeyChecking=no ubuntu@ip-172-31-8-203 "cd /var/www/html && unzip '*.zip'"
+                    ssh -o StrictHostKeyChecking=no ubuntu@ip-172-31-8-203 "cd /var/www/html && unzip '*.zip -d'"
                 '''
             }
         }
