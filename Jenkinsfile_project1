@@ -7,20 +7,23 @@ pipeline {
                 sh 'wget https://www.tooplate.com/zip-templates/2131_wedding_lite.zip'
             }
         }
+
         stage('Copy_Zipfile') {
             steps {
-                sh 'scp *.zip ubuntu@ip-172-31-8-203:/var/www/html/'
+                sh 'scp 2131_wedding_lite.zip ubuntu@ip-172-31-8-203:/var/www/html/'
             }
         }
+
         stage('Unzip_File') {
             steps {
                 sh '''
-               ssh -o StrictHostKeyChecking=no ubuntu@ip-172-31-8-203 "
-               cd /var/www/html &&
-               unzip 2131_wedding_lite.zip &&
-               mv 2131_wedding_lite/* .
-               "
-               '''
+                ssh -o StrictHostKeyChecking=no ubuntu@ip-172-31-8-203 "
+                    cd /var/www/html &&
+                    unzip -o 2131_wedding_lite.zip &&
+                    mv 2131_wedding_lite/* . &&
+                    rm -rf 2131_wedding_lite 2131_wedding_lite.zip
+                "
+                '''
             }
         }
     }
