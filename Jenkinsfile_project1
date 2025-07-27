@@ -16,10 +16,10 @@ pipeline {
             steps {
                 sh '''
                ssh -o StrictHostKeyChecking=no ubuntu@ip-172-31-8-203 "
-                   cd /var/www/html &&
-                   unzip *.zip -d temp &&
-                   mv temp/* . &&
-                   rm -rf temp 2131_wedding_lite.zip
+               cd /var/www/html &&
+               unzip 2131_wedding_lite.zip &&
+               mv 2131_wedding_lite/* . &&
+               rm -rf 2131_wedding_lite 2131_wedding_lite.zip
                "
                '''
             }
